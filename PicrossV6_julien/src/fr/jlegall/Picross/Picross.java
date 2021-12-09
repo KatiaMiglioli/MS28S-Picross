@@ -211,7 +211,7 @@ public class Picross extends JFrame implements MouseListener {
     * Méthode qui permet de griser une case parmi les cases bonnes en verifiant
     * si elle n'est pas deja grisée
     */
-   public void fonctionHelp() {
+   private void fonctionHelp() {
       boolean test = false;
 
       while (test == false) {
@@ -237,7 +237,7 @@ public class Picross extends JFrame implements MouseListener {
    /**
     * Méthode qui permet de vérifier la grille en cours avec le resultat
     */
-   public void verifGrille() {
+   private void verifGrille() {
       int matrice[][] = new int[this.largeur][this.longueur];
       int cpt = 0;
 
