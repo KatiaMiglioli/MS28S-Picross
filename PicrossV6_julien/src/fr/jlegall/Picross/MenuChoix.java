@@ -30,7 +30,7 @@ public class MenuChoix extends JFrame {
       pan2.setPreferredSize(new Dimension(200, 100));
       BoxLayout boxMiddle = new BoxLayout(pan2, BoxLayout.X_AXIS);
       pan2.setLayout(boxMiddle);
-      JLabel label2 = new JLabel("Taille :    ");
+      JLabel label2 = new JLabel("Grid :    ");
 
       String[] items = {"5x5", "10x10", "15x15", "20x20", "25x25"};
       JComboBox maCombo = new JComboBox(items);
@@ -44,7 +44,7 @@ public class MenuChoix extends JFrame {
       pan3.setPreferredSize(new Dimension(200, 100));
       BoxLayout boxBot = new BoxLayout(pan3, BoxLayout.X_AXIS);
       pan3.setLayout(boxBot);
-      JButton btnValid = new JButton("VALIDER");
+      JButton btnValid = new JButton("Começar");
       pan3.add(btnValid);
 
       //panMain.add(pan1);

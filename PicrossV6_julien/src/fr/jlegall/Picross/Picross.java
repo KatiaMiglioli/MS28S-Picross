@@ -66,8 +66,8 @@ public class Picross extends JFrame implements MouseListener {
 
          public void windowClosing(WindowEvent e) {
             int reponse = opt.showConfirmDialog(null,
-                    "Voulez-vous quitter l'application ?",
-                    "Confirmation",
+                    "Tem certeza que deseja sair do jogo?",
+                    "Confirmar",
                     opt.YES_NO_OPTION,
                     opt.QUESTION_MESSAGE);
 
@@ -79,7 +79,7 @@ public class Picross extends JFrame implements MouseListener {
 
       JMenuBar menuBar = new JMenuBar();
       JMenu menu = new JMenu("Menu");
-      JMenu regle = new JMenu("RÃ©gles");
+      JMenu regle = new JMenu("Regras");
       menuBar.add(menu);
       menuBar.add(regle);
       this.setJMenuBar(menuBar);
@@ -160,8 +160,9 @@ public class Picross extends JFrame implements MouseListener {
 
       JPanel menuTest = new JPanel();
 
-      JButton btnVerif = new JButton("VERIFIER");
-      btnHelp = new ButtonHelp("AIDE", 5);
+      JButton btnVerif = new JButton("Verificar");
+      int helps = (int) ((this.largeur * this.longueur)*0.20);
+      btnHelp = new ButtonHelp("Ajuda",helps);
 
       btnHelp.addMouseListener(this);
 
@@ -198,7 +199,7 @@ public class Picross extends JFrame implements MouseListener {
          try {
             this.fonctionHelp();
          } catch (java.lang.IndexOutOfBoundsException e) {
-            System.err.println("Aide impossible");
+            System.err.println("Ajuda Impossível");
          }
 
       } else if (event.getComponent() != this.btnHelp) {
@@ -251,13 +252,13 @@ public class Picross extends JFrame implements MouseListener {
       final JFrame popup = new JFrame();
       JPanel pan = new JPanel();
       JLabel msg = new JLabel();
-      JButton btnOk = new JButton("OK");
+      JButton btnOk = new JButton("Ok");
 
       btnOk.setAlignmentX(Component.CENTER_ALIGNMENT);
       msg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
       popup.setSize(300, 75);
-      popup.setTitle("POPUP");
+      popup.setTitle("Popup");
       popup.setResizable(false);
 
       BoxLayout boxMain = new BoxLayout(pan, BoxLayout.Y_AXIS);
@@ -265,14 +266,14 @@ public class Picross extends JFrame implements MouseListener {
       pan.setLayout(boxMain);
 
       if (ok) {
-         msg.setText("Bravo, vous avez gagnÃ© !!");
+         msg.setText("Parabéns, você ganhou!");
          btnOk.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
                JOptionPane opt = new JOptionPane();
 
                int reponse = opt.showConfirmDialog(null,
-                       "Voulez-vous recommencer ?",
-                       "Confirmation",
+                       "Deseja recomeçar?",
+                       "Confirmar",
                        opt.YES_NO_OPTION,
                        opt.QUESTION_MESSAGE);
 
@@ -288,7 +289,7 @@ public class Picross extends JFrame implements MouseListener {
          });
 
       } else {
-         msg.setText("DOMMAGE, try again !!");
+         msg.setText("Errado!! Tente novamente.");
          btnOk.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
                popup.dispose();

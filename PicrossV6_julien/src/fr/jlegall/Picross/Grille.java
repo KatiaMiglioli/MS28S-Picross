@@ -52,7 +52,7 @@ public class Grille {
          System.out.println();
       }
 
-      System.out.println("## INDEX LARGEUR ##");
+      //System.out.println("## INDEX LARGEUR ##");
       for (int i = 0; i < this.largeur; i++) {
          for (int j = 0; j < (this.longueur + 1) / 2; j++) {
             System.out.print(this.tabIndexLargeur[i][j]);
@@ -60,7 +60,7 @@ public class Grille {
          System.out.println();
       }
 
-      System.out.println("## INDEX LONGUEUR ##");
+      //System.out.println("## INDEX LONGUEUR ##");
       for (int i = 0; i < (this.largeur + 1) / 2; i++) {
          for (int j = 0; j < this.longueur; j++) {
             System.out.print(this.tabIndexLongueur[i][j]);
