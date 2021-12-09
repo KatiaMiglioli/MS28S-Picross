@@ -78,10 +78,8 @@ public class Picross extends JFrame implements MouseListener {
       });
 
       JMenuBar menuBar = new JMenuBar();
-      JMenu menu = new JMenu("Menu");
-      JMenu regle = new JMenu("Regras");
-      menuBar.add(menu);
-      menuBar.add(regle);
+      menuBar.add(new JMenu("Menu"));
+      menuBar.add(new JMenu("Regras"));
       this.setJMenuBar(menuBar);
 
       //Creer le JPanel principal pour contenir tous les components
