@@ -16,23 +16,23 @@ import javax.swing.border.Border;
  */
 public class Label extends JLabel {
 
-   private int valeur;
-   private int taille;
+	private int valeur;
+	private int taille;
 
-   public Label(int val,int t) {
-      this.valeur = val;
-      this.taille =t;
-      this.setPreferredSize(new Dimension(t, t));
-      this.setHorizontalAlignment(JLabel.CENTER);
-      this.setVerticalAlignment(JLabel.CENTER);
-      if(val == 0){
-         this.setText("");
-      }else{
-         this.setText(Integer.toString(val));  
-      }
-      
-      Border grayBorder = BorderFactory.createLineBorder(Color.DARK_GRAY, 1);
-      this.setBorder(grayBorder);
-   }
+	public Label(int val, int t) {
+		this.valeur = val;
+		this.taille = t;
+		this.setPreferredSize(new Dimension(t, t));
+		this.setHorizontalAlignment(JLabel.CENTER);
+		this.setVerticalAlignment(JLabel.CENTER);
+		if (val == 0) {
+			this.setText("");
+		} else {
+			this.setText(Integer.toString(val));
+		}
+
+		Border grayBorder = BorderFactory.createLineBorder(Color.DARK_GRAY, 1);
+		this.setBorder(grayBorder);
+	}
 
 }

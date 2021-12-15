@@ -11,67 +11,67 @@ import java.util.logging.Logger;
 
 public class MenuChoix extends JFrame {
 
-   private List<JComboBox> mesCombos;
+	private List<JComboBox> mesCombos;
 
-   public MenuChoix() {
+	public MenuChoix(String language) {
+		Translator translator = new Translator();
+		mesCombos = new ArrayList<>();
 
-      mesCombos = new ArrayList<>();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(200, 200);
+		this.setResizable(false);
 
-      this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      this.setSize(200, 200);
-      this.setResizable(false);
+		JPanel panMain = new JPanel();
 
-      JPanel panMain = new JPanel();
+		BoxLayout boxMain = new BoxLayout(panMain, BoxLayout.Y_AXIS);
+		panMain.setLayout(boxMain);
 
-      BoxLayout boxMain = new BoxLayout(panMain, BoxLayout.Y_AXIS);
-      panMain.setLayout(boxMain);
+		JPanel pan2 = new JPanel();
+		pan2.setPreferredSize(new Dimension(200, 100));
+		BoxLayout boxMiddle = new BoxLayout(pan2, BoxLayout.X_AXIS);
+		pan2.setLayout(boxMiddle);
+		JLabel label2 = new JLabel(translator.getMessage(language, "gridMessage") + " :    ");
 
-      JPanel pan2 = new JPanel();
-      pan2.setPreferredSize(new Dimension(200, 100));
-      BoxLayout boxMiddle = new BoxLayout(pan2, BoxLayout.X_AXIS);
-      pan2.setLayout(boxMiddle);
-      JLabel label2 = new JLabel("Grid :    ");
+		String[] items = { "5x5", "10x10", "15x15", "20x20", "25x25" };
+		JComboBox maCombo = new JComboBox(items);
+		maCombo.setMaximumSize(new Dimension(100, 24));
 
-      String[] items = {"5x5", "10x10", "15x15", "20x20", "25x25"};
-      JComboBox maCombo = new JComboBox(items);
-      maCombo.setMaximumSize(new Dimension(100, 24));
+		mesCombos.add(maCombo);
+		pan2.add(label2);
+		pan2.add(maCombo);
 
-      mesCombos.add(maCombo);
-      pan2.add(label2);
-      pan2.add(maCombo);
+		JPanel pan3 = new JPanel();
+		pan3.setPreferredSize(new Dimension(200, 100));
+		BoxLayout boxBot = new BoxLayout(pan3, BoxLayout.X_AXIS);
+		pan3.setLayout(boxBot);
+		JButton btnValid = new JButton(translator.getMessage(language, "startMessage"));
+		pan3.add(btnValid);
 
-      JPanel pan3 = new JPanel();
-      pan3.setPreferredSize(new Dimension(200, 100));
-      BoxLayout boxBot = new BoxLayout(pan3, BoxLayout.X_AXIS);
-      pan3.setLayout(boxBot);
-      JButton btnValid = new JButton("Começar");
-      pan3.add(btnValid);
+		// panMain.add(pan1);
+		panMain.add(pan2);
+		panMain.add(pan3);
 
-      //panMain.add(pan1);
-      panMain.add(pan2);
-      panMain.add(pan3);
+		this.setContentPane(panMain);
+		this.setVisible(true);
+		this.setLocationRelativeTo(null);
 
-      this.setContentPane(panMain);
-      this.setVisible(true);
-      this.setLocationRelativeTo(null);
+		btnValid.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent event) {
+				String taille;
+				int tailleB = 5;
+				int id;
 
-      btnValid.addMouseListener(new MouseAdapter() {
-         public void mouseClicked(MouseEvent event) {
-            String taille;
-            int tailleB = 5;
-            int id;
+				taille = MenuChoix.this.mesCombos.get(0).getSelectedItem().toString();
+				id = MenuChoix.this.mesCombos.get(0).getSelectedIndex() + 1;
 
-            taille = MenuChoix.this.mesCombos.get(0).getSelectedItem().toString();
-            id = MenuChoix.this.mesCombos.get(0).getSelectedIndex() + 1;
+				try {
+					Picross newPicross = new Picross(id * tailleB, id * tailleB, language);
+					MenuChoix.this.dispose();
+				} catch (UnsupportedLookAndFeelException ex) {
+					Logger.getLogger(MenuChoix.class.getName()).log(Level.SEVERE, null, ex);
+				}
+			}
+		});
 
-            try {
-               Picross newPicross = new Picross(id * tailleB, id * tailleB);
-               MenuChoix.this.dispose();
-            } catch (UnsupportedLookAndFeelException ex) {
-               Logger.getLogger(MenuChoix.class.getName()).log(Level.SEVERE, null, ex);
-            }
-         }
-      });
-
-   }
+	}
 }
