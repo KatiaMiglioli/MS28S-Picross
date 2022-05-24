@@ -14,7 +14,7 @@ public class MenuChoix extends JFrame {
 
 	private List<JComboBox<String>> mesCombos;
 
-	public MenuChoix(String language) {
+	public MenuChoix(final String language) {
 		Translator translator = new Translator();
 		mesCombos = new ArrayList<>();
 

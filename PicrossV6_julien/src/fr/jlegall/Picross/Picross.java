@@ -19,7 +19,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @SuppressWarnings("serial")
-public class Picross extends JFrame implements MouseListener {
+public class Picross extends javax.swing.JFrame implements MouseListener {
 
 	private int longueur;
 	private int largeur;
@@ -31,8 +31,8 @@ public class Picross extends JFrame implements MouseListener {
 	private static int cpt = 0;
 	private List<Picross> listeTest;
 
-	public Picross(int largeur, int longueur, String language) throws UnsupportedLookAndFeelException {
-		Translator translator = new Translator();
+	public Picross(int largeur, int longueur, final String language) throws UnsupportedLookAndFeelException {
+		final Translator translator = new Translator();
 		this.language = language;
 		// Essentiellement pour Mac OS afin d'afficher les boutons correctement
 		UIManager.setLookAndFeel(new MetalLookAndFeel());
@@ -73,7 +73,7 @@ public class Picross extends JFrame implements MouseListener {
 		} else if (language == "en-us") {
 			JOptionPane.setDefaultLocale(Locale.ENGLISH);
 		}
-		System.out.println(JOptionPane.getDefaultLocale());
+
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -240,7 +240,7 @@ public class Picross extends JFrame implements MouseListener {
 			try {
 				this.fonctionHelp();
 			} catch (java.lang.IndexOutOfBoundsException e) {
-				System.err.println("Ajuda Imposs�vel");
+				System.err.println("Ajuda Imposs�vel");
 			}
 
 		} else if (event.getComponent() != this.btnHelp) {
@@ -279,7 +279,7 @@ public class Picross extends JFrame implements MouseListener {
 	 * Méthode qui permet de vérifier la grille en cours avec le resultat
 	 */
 	private void verifGrille() {
-		Translator translator = new Translator();
+		final Translator translator = new Translator();
 		int matrice[][] = new int[this.largeur][this.longueur];
 		int cpt = 0;
 
