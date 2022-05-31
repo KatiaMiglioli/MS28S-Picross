@@ -127,15 +127,9 @@ public class Picross extends javax.swing.JFrame implements MouseListener {
 		this.setJMenuBar(menuBar);
 
 		// Creer le JPanel principal pour contenir tous les components
-		JPanel mainPanel = new JPanel();
+		JPanel mainPanel = newBoxLayout(BoxLayout.Y_AXIS);
+		JPanel pan = newBoxLayout(BoxLayout.X_AXIS);
 
-		// Creer le BoxLayout principale qui recevra tous les autres box
-		BoxLayout boxMain = new BoxLayout(mainPanel, BoxLayout.Y_AXIS);
-		mainPanel.setLayout(boxMain);
-
-		JPanel pan = new JPanel();
-		BoxLayout boxHaut = new BoxLayout(pan, BoxLayout.X_AXIS);
-		pan.setLayout(boxHaut);
 		JPanel time = new JPanel();
 
 		time.setPreferredSize(new Dimension(((this.longueur + 1) / 2) * tb, ((this.largeur + 1) / 2) * tb));
@@ -162,9 +156,7 @@ public class Picross extends javax.swing.JFrame implements MouseListener {
 		pan.add(tabIndiceLongueur);
 		mainPanel.add(pan);
 
-		JPanel pan1 = new JPanel();
-		BoxLayout boxBas = new BoxLayout(pan1, BoxLayout.X_AXIS);
-		pan1.setLayout(boxBas);
+		JPanel pan1 = newBoxLayout(BoxLayout.X_AXIS);
 
 		JPanel tabIndiceLargeur = new JPanel();
 		GridLayout tabLargeur = new GridLayout(this.largeur, ((this.longueur + 1) / 2));
@@ -292,7 +284,7 @@ public class Picross extends javax.swing.JFrame implements MouseListener {
 
 		boolean ok = grille.compareGrille(matrice);
 		final JFrame popup = new JFrame();
-		JPanel pan = new JPanel();
+		JPanel pan = newBoxLayout(BoxLayout.Y_AXIS);
 		JLabel msg = new JLabel();
 		JButton btnOk = new JButton("Ok");
 
@@ -302,10 +294,7 @@ public class Picross extends javax.swing.JFrame implements MouseListener {
 		popup.setSize(300, 75);
 		popup.setTitle("Popup");
 		popup.setResizable(false);
-
-		BoxLayout boxMain = new BoxLayout(pan, BoxLayout.Y_AXIS);
-
-		pan.setLayout(boxMain);
+                
 		if (language == "pt-br") {
 		} else if (language == "fr-fr") {
 			JOptionPane.setDefaultLocale(Locale.FRENCH);
@@ -350,6 +339,14 @@ public class Picross extends javax.swing.JFrame implements MouseListener {
 		popup.setLocationRelativeTo(null);
 
 	}
+        
+        private JPanel newBoxLayout (int AXIS){
+            JPanel Panel = new JPanel();
+            BoxLayout boxMain = new BoxLayout(Panel, AXIS);
+            Panel.setLayout(boxMain);
+            
+            return Panel;
+        }
 
 	@Override
 	public void mousePressed(MouseEvent e) {
